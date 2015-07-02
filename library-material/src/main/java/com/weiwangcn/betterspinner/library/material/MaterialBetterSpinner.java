@@ -45,6 +45,21 @@ public class MaterialBetterSpinner extends MaterialAutoCompleteTextView implemen
         this.itemClickListenerFromOutside = listener;
     }
 
+    /**
+     * Selects the item of the given index, without calling any listeners.
+     * It ignores values which are out of range of the adapter's items list
+     * @param selectedItemIndex
+     */
+    public void setSelectedItem(int selectedItemIndex) {
+        if (selectedItemIndex >= 0 && selectedItemIndex < this.getAdapter().getCount()) {
+            Object item = this.getAdapter().getItem(selectedItemIndex);
+            this.setText(item.toString());
+
+            // Reset the filter list to show all elements
+            this.performFiltering("", 0);
+        }
+    }
+
     @Override
     public boolean enoughToFilter() {
         return true;
