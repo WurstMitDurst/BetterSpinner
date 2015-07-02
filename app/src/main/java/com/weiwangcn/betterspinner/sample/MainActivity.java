@@ -40,22 +40,6 @@ public class MainActivity extends ActionBarActivity {
 
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
-
-        spinner1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Test for double click bugfix
-        // With this on click listener, the spinner should work with only one touch, not two.
-        spinner2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 
