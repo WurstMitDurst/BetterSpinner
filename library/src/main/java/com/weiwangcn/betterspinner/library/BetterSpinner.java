@@ -18,20 +18,26 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
     private static final int MAX_CLICK_DURATION = 200;
     private long startClickTime;
     private boolean isPopup;
+    private AdapterView.OnItemClickListener itemClickListenerFromOutside = null;
 
     public BetterSpinner(Context context) {
         super(context);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
     }
 
     public BetterSpinner(Context arg0, AttributeSet arg1) {
         super(arg0, arg1);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
     }
 
     public BetterSpinner(Context arg0, AttributeSet arg1, int arg2) {
         super(arg0, arg1, arg2);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
+        this.itemClickListenerFromOutside = listener;
     }
 
     @Override
@@ -82,7 +88,11 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // Do whatever this class wants to do
         isPopup = false;
+
+        // Call click listener of other class
+        this.itemClickListenerFromOutside.onItemClick(adapterView, view, i, l);
     }
 
     @Override
