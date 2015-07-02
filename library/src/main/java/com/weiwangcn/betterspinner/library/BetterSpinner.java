@@ -72,6 +72,7 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
             dismissDropDown();
         } else {
             isPopup = false;
+            dismissDropDown();
         }
     }
 
@@ -107,7 +108,9 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
         isPopup = false;
 
         // Call click listener of other class
-        this.itemClickListenerFromOutside.onItemClick(adapterView, view, i, l);
+        if(this.itemClickListenerFromOutside != null){
+            this.itemClickListenerFromOutside.onItemClick(adapterView, view, i, l);
+        }
     }
 
     @Override
