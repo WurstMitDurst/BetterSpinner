@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_visit_repo) {
-            Uri uri = Uri.parse("https://github.com/Lesilva/BetterSpinner");
+            Uri uri = Uri.parse("https://github.com/WurstMitDurst/BetterSpinner");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
 
