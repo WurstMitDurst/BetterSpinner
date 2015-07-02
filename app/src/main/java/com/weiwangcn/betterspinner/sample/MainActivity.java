@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.weiwangcn.betterspinner.R;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
@@ -38,6 +41,21 @@ public class MainActivity extends ActionBarActivity {
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
 
+        spinner1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Test for double click bugfix
+        // With this on click listener, the spinner should work with only one touch, not two.
+        spinner2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

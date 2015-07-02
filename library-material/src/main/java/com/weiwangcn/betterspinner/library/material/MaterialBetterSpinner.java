@@ -9,31 +9,40 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
-public class MaterialBetterSpinner extends MaterialAutoCompleteTextView implements AdapterView.OnItemClickListener {
+public class MaterialBetterSpinner extends MaterialAutoCompleteTextView implements OnItemClickListener {
 
     private static final int MAX_CLICK_DURATION = 200;
     private long startClickTime;
     private boolean isPopup;
+    private OnItemClickListener itemClickListenerFromOutside = null;
 
     public MaterialBetterSpinner(Context context) {
         super(context);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
     }
 
     public MaterialBetterSpinner(Context arg0, AttributeSet arg1) {
         super(arg0, arg1);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
     }
 
     public MaterialBetterSpinner(Context arg0, AttributeSet arg1, int arg2) {
         super(arg0, arg1, arg2);
-        setOnItemClickListener(this);
+        super.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListenerFromOutside = listener;
     }
 
     @Override
@@ -84,7 +93,11 @@ public class MaterialBetterSpinner extends MaterialAutoCompleteTextView implemen
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // Do whatever this class wants to do
         isPopup = false;
+
+        // Call click listener of other class
+        this.itemClickListenerFromOutside.onItemClick(adapterView, view, i, l);
     }
 
     @Override
