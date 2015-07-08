@@ -40,6 +40,21 @@ public class MainActivity extends ActionBarActivity {
 
         spinner1.setAdapter(adapter);
         spinner2.setAdapter(adapter);
+
+        // TEST
+        spinner1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                spinner2.clearSelectedItem();
+            }
+        });
+
+        spinner2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                spinner1.clearSelectedItem();
+            }
+        });
     }
 
 
