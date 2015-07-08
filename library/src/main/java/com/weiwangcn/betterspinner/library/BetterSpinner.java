@@ -55,6 +55,16 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
         }
     }
 
+    /**
+     * Clears the selection by clearing the EditText used by this Spinner.
+     */
+    public void clearSelectedItem() {
+        this.setText("");
+
+        // Reset the filter list to show all elements
+        this.performFiltering("", 0);
+    }
+
     @Override
     public boolean enoughToFilter() {
         return true;
