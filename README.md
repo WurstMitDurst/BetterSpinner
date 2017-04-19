@@ -9,6 +9,7 @@
 This is a fork, which adds the following features:
 - setSelectedItem() to programmatically set the selected item
 - clearSelectedItem() to do the reverse
+-  Fixed bug, where a double touch is necessary, when using own OnItemClickListeners
 --------------------------
 
 ## Original Document
