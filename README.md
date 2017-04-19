@@ -4,6 +4,14 @@
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-BetterSpinner-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1707)
 
+## FORK
+--------------------------
+This is a fork, which adds the following features:
+- setSelectedItem() to programmatically set the selected item
+- clearSelectedItem() to do the reverse
+--------------------------
+
+## Original Document
 If you like developing Android, you must "hate" Spinners. I had countless issues with Spinners and I decided to make a new one. BetterSpinner is using AutoCompleteTextView to do what a Spinner really should do.
 
 ## Screenshots
